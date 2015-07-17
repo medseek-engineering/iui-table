@@ -1,0 +1,8 @@
+<td data-header="{{column.displayName}}" ng-repeat="column in iuiTable.displayColumns" ng-switch="column.field" class="iui-table-{{column.field}}">
+  <span ng-switch-when="date">
+    <time datetime="{{row[column.field] | date:'yyyy-mm-dd'}}">{{row[column.field] | date:'mm/dd/yyyy'}}</time>
+  </span>
+  <span ng-switch-default>
+    {{row[column.field]}}
+  </span>
+</td>

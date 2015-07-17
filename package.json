@@ -1,0 +1,19 @@
+{
+  "name": "iui-table",
+  "version": "1.0.0",
+  "description": "Angular dynamic table directive",
+  "main": "./lib/index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medseek-engineering/iui-table.git"
+  },
+  "author": "Influence Health, Inc.",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/medseek-engineering/iui-table/issues"
+  }
+}
