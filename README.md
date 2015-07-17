@@ -20,37 +20,37 @@ ui.use(require('iui-table'));
 
 Adding the iui-table directive to your markup:
 ```javascript
-  scope.pagingData = [
+  scope.data = [
     {
-      field1: 'cell1',
-      field2: 'cell2'
+      firstName: 'Joe',
+      lastName: 'Smith'
     },
     {
-      field1: 'cell3',
-      field2: 'cell4'
+      firstName: 'Janet',
+      lastName: 'Doe'
     }
   ];
   scope.gridColumns = [
-   { field: 'field1', displayName: 'Column 1'},
-   { field: 'field2', displayName: 'Column 2'}
+   { field: 'firstName', displayName: 'First Name'},
+   { field: 'lastName', displayName: 'Last Name'}
   ];
-  scope.sortingOptions = { field: 'LastActivity', reverse: true };
+  scope.sortingOptions = { field: 'lastName', reverse: false };
 ```
 ```html
 <iui-table 
   display-columns="gridColumns" 
-  row-data="pagingData" 
+  row-data="data" 
   hide-table-pager="false" 
   row-template="'/modules/request-center/templates/requests-row.html'" 
-  sorting-options="pendingRequestSortingOption" 
-  table-class="'card-on-sm-expanded'" 
+  sorting-options="sortingOption" 
+  table-class="'table-names'" 
   server-side-sorting="false"></iui-table>
 ```
 <dl>
 	<dt>displayColumns</dt>
-	<dd><code>Array</code> - defines the columns in the grid</dd>
+	<dd><code>Array</code> <b>Required</b> - defines the columns in the grid</dd>
 	<dt>rowData</dt>
-	<dd><code>Array</code> - raw array of data. Only the data defined in the columns will show</dd>
+	<dd><code>Array</code> <b>Required</b> - array of data. Only the fields defined in the displayColumns will show</dd>
 	<dt>hideTablePager</dt>
 	<dd><code>Boolean</code> - determines if the pagination at the bottom should show</dd>
 	<dt>rowTemplate</dt>
