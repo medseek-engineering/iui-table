@@ -48,17 +48,17 @@ Adding the iui-table directive to your markup:
 ```
 <dl>
 	<dt>displayColumns</dt>
-	<dd><em>Array</em> - defines the columns in the grid</dd>
+	<dd><code>Array</code> - defines the columns in the grid</dd>
 	<dt>rowData</dt>
-	<dd><em>Array</em> - raw array of data. Only the data defined in the columns will show</dd>
+	<dd><code>Array</code> - raw array of data. Only the data defined in the columns will show</dd>
 	<dt>hideTablePager</dt>
-	<dd><em>Boolean</em> - determines if the pagination at the bottom should show</dd>
+	<dd><code>Boolean</code> - determines if the pagination at the bottom should show</dd>
 	<dt>rowTemplate</dt>
-	<dd><em>String</em> - allows a custom row template to be passed in</dd>
+	<dd><code>String</code> - allows a custom row template to be passed in</dd>
 	<dt>sortingOptions</dt>
-	<dd><em>Object</em> - with two properties field: <em>String</em> and reverse: <em>Boolean</em></dd>
+	<dd><code>Object</code> - with two properties field: <code>String</code> and reverse: <code>Boolean</code></dd>
 	<dt>tableClass</dt>
-	<dd><em>String</em> - passes in class to table. You can chain table classes like 'class1 class2'</dd>
+	<dd><code>String</code> - passes in class to table. You can chain table classes like 'class1 class2'</dd>
 	<dt>serverSideSorting</dt>
-	<dd><em>Boolean</em> - if there is server side sorting set to true</dd>
+	<dd><code>Boolean</code> - if there is server side sorting set to true</dd>
 </dl>
