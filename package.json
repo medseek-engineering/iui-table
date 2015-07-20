@@ -1,6 +1,6 @@
 {
   "name": "iui-table",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Angular dynamic table directive",
   "main": "./lib/index.js",
   "private": true,
