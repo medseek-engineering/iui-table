@@ -25,7 +25,7 @@
         <th
           scope="col"
           ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'!checkbox'} | filter:{field:'!Button'} | filter:{field:'!unread'}"
-          class="table_header_{{column.field}}">
+          class="iui-table-header-{{column.field}}">
           <iui-sort-heading
             iui-sort-key="{{columnHeader.field}}"
             iui-sort-by="iuiTable.sortingOptions.field"
