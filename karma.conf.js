@@ -51,12 +51,6 @@ module.exports = function (config) {
       templatePath: __dirname + '/node_modules/karma-html-reporter/jasmine_template.html'
     },
 
-    ngHtml2JsPreprocessor: {
-      prependPrefix: '/',
-      stripPrefix: 'app/',
-      moduleName: 'templates'
-    },
-
     files: [
       // app core dependencies
       'test/test-helper.js',
@@ -70,7 +64,7 @@ module.exports = function (config) {
       'lib/filters/*.js',
 
       //directive templates
-      'lib/templates/*.html',
+      'lib/**/*.html',
       // test scripts
       'test/**/*.test.js'
     ],
@@ -78,11 +72,19 @@ module.exports = function (config) {
     reporters: ['coverage', 'progress', 'html'],
 
     preprocessors: {
-      'lib/templates/**/*.html': ['ng-html2js'],
+      'lib/**/*.html': ['ng-html2js'],
       'lib/directives/*.js': ['coverage'],
       'lib/filters/*.js': ['coverage'],
       'lib/services/*.js': ['coverage']
     },
+
+    ngHtml2JsPreprocessor: {
+      // immitates ui-core
+      prependPrefix: '/$iui-table',
+      stripPrefix: 'lib',
+      moduleName: 'templates'
+    },
+
     frameworks: ['jasmine']
   });
 };
