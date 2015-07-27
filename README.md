@@ -16,6 +16,12 @@ Use in app.js:
 ui.use(require('iui-table'));
 ```
 
+Add 'pagination' as a module dependency in includeDependencies.js
+```javascript
+app.ng.requires.push('pagination');
+```
+
+
 ## Usage
 
 Adding the iui-table directive to your markup:
