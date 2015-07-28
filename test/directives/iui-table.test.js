@@ -60,11 +60,13 @@
       scope.displayColumns = [
         {
           field: 'codeName',
-          displayName: 'Code Name'
+          displayName: 'Code Name',
+          columnClass: 'code-name-custom-class'
         },
         {
           field: 'agency',
-          displayName: 'Agency'
+          displayName: 'Agency',
+          columnClass: 'agencyCustomClass'
         }
       ];
       scope.rowData = [
@@ -82,7 +84,7 @@
           agency: 'KAOS'
         }
       ];
-      element = angular.element('<iui-table row-data="rowData" display-columns="displayColumns"></iui-table>');
+      element = angular.element('<iui-table row-data="rowData" display-columns="displayColumns" table-class="\'custom-class-1 customClass2\'"></iui-table>');
       el = $compile(element)(scope);
       scope.$digest();
 
@@ -100,6 +102,43 @@
         expect(el.find('tbody').length).toBe(1);
       });
 
+    });
+    describe('can be customized', function () {
+      it('<table> can have multiple CSS classes passed in', function () {
+        var tableElement = el.find('table').eq(0);
+        expect(tableElement.hasClass('custom-class-1')).toBe(true);
+        expect(tableElement.hasClass('customClass2')).toBe(true);
+      });
+      it('<th> has a class name based on the field \'iui-table-header-{{columnHeader.field}}\'', function () {
+        //iui-table-header-{{column.field}}
+        var thElements = el.find('th');
+        expect(thElements.eq(0).hasClass('iui-table-header-codename')).toBe(true);
+        expect(thElements.eq(1).hasClass('iui-table-header-agency')).toBe(true);
+        // testing lowercase filter
+        expect(thElements.eq(0).hasClass('iui-table-header-codeName')).toBe(false);
+      });
+      it('<td> has a class name based on the field \'iui-table-{{column.field}}\'', function () {
+        //iui-table-header-{{column.field}}
+        var tdElements = el.find('td');
+        expect(tdElements.eq(0).hasClass('iui-table-codename')).toBe(true);
+        expect(tdElements.eq(1).hasClass('iui-table-agency')).toBe(true);
+        // testing lowercase filter
+        expect(tdElements.eq(0).hasClass('iui-table-codeName')).toBe(false);
+      });
+      it('<th> has a custom class', function () {
+        //code-name-custom-class agencyCustomClass
+        var thElements = el.find('th');
+        expect(thElements.eq(0).hasClass('code-name-custom-class')).toBe(true);
+        expect(thElements.eq(1).hasClass('agencyCustomClass')).toBe(true);
+        expect(thElements.eq(1).hasClass('AgencyCustomClass')).toBe(false);
+      });
+      it('<td> has a custom class', function () {
+        //code-name-custom-class agencyCustomClass
+        var tdElements = el.find('td');
+        expect(tdElements.eq(0).hasClass('code-name-custom-class')).toBe(true);
+        expect(tdElements.eq(1).hasClass('agencyCustomClass')).toBe(true);
+        expect(tdElements.eq(1).hasClass('AgencyCustomClass')).toBe(false);
+      });
     });
     describe('can display a 2 column table with 3 rows of data', function () {
       it('contains two <th>', function () {
@@ -120,6 +159,35 @@
 
       it('pagination controls are not visible', function () {
         expect(el.find('ul').length).toBe(0);
+      });
+    });
+    describe('table header can have a custom template', function () {
+      beforeEach(inject(function($templateCache) {
+        var customCellTemplate = '<span class="sr-only">Zis is KAOS!</span><i aria-hidden="true" class="glyphicon glyphicon-star"></i>';
+        $templateCache.put('/templates/custom-cell-template.html', customCellTemplate);
+      }));
+      beforeEach(function () {
+        scope.displayColumns = [
+          {
+            field: 'codeName',
+            displayName: 'Code Name'
+          },
+          {
+            field: 'agency',
+            displayName: 'Agency',
+            headerCellTemplate: '/templates/custom-cell-template.html'
+          }
+        ];
+        scope.$digest();
+      });
+      it('text from custom header cell template displays', function () {
+        expect(el.find('th').eq(1).text().trim()).toBe('Zis is KAOS!');
+      });
+      it('icon from custom header cell template displays', function () {
+        var iconElement = el.find('i').eq(0);
+        expect(iconElement.hasClass('glyphicon')).toBe(true);
+        expect(iconElement.hasClass('glyphicon-star')).toBe(true);
+        expect(iconElement.hasClass('KAOS')).toBe(false);
       });
     });
     describe('only shows data defined in the columnDefintion ARRAY', function () {

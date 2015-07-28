@@ -10,7 +10,7 @@
         <button ng-disabled="pages[1].disabled" ng-class="{pagerDisabled: pages[1].disabled}" class="pager-button  pull-left margin-right-5"  ng-click="selectPage(pages[1].number)"><i class="pager-back-img"></i><span class="sr-only">Previous Page</span></button>
       </li>
       <li><div class="clearfix">
-        <label><span class="sr-only">Current Page</span><input class="form-control pagination-current-page" onkeypress="return isNumber(event)" type="text" ng-model="page"></label>
+        <label><span class="sr-only">Current Page</span><input class="form-control pagination-current-page" onkeypress="return isNumber(event)" type="number" ng-model="page"></label>
         <span class="pagination-total-pages ">/ {{pages[4].number}}</span>
       </div></li>
     <li  ng-class="{active: pages[3].active, disabled: pages[3].disabled}" > 

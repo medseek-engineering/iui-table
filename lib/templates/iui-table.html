@@ -8,12 +8,12 @@
     </caption>
     <thead>
       <tr>
-        <th scope="col" ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'checkbox'}">
+        <th scope="col" ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'checkbox'}" class="iui-table-header-{{columnHeader.field | lowercase}} {{columnHeader.columnClass}}">
           <input type="checkbox" class="custom-checkbox in-table-header" ng-model="selectedAll" id="item-selected-{{iuiTable.tableClass}}" ng-click="checkAll()">
           <label for="item-selected-{{iuiTable.tableClass}}"><span class="sr-only">Select All</span></label>
           <span class="sr-only">Selected</span>
         </th>
-        <th scope="col" ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'unread'}">
+        <th scope="col" ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'unread'}" class="iui-table-header-{{columnHeader.field | lowercase}} {{columnHeader.columnClass}}">
           <iui-sort-heading
             iui-sort-key="{{columnHeader.field}}"
             iui-sort-by="iuiTable.sortingOptions.field"
@@ -25,15 +25,10 @@
         <th
           scope="col"
           ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'!checkbox'} | filter:{field:'!Button'} | filter:{field:'!unread'}"
-          class="iui-table-header-{{column.field}}">
-          <iui-sort-heading
-            iui-sort-key="{{columnHeader.field}}"
-            iui-sort-by="iuiTable.sortingOptions.field"
-            iui-reverse="iuiTable.sortingOptions.reverse">
-            {{columnHeader.displayName}}
-          </iui-sort-heading>
+          class="iui-table-header-{{columnHeader.field | lowercase}} {{columnHeader.columnClass}}" 
+          ng-include="(columnHeader.headerCellTemplate)? columnHeader.headerCellTemplate : iuiTable.settings.defaultHeaderCellTemplate">
         </th>
-        <th scope="col" ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'Button'}">
+        <th scope="col" ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'Button'}" class="iui-table-header-{{columnHeader.field | lowercase}} {{columnHeader.columnClass}}">
           <span class="sr-only">Actions</span>
         </th>
       </tr>

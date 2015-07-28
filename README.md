@@ -36,11 +36,23 @@ Adding the iui-table directive to your markup:
       lastName: 'Doe'
     }
   ];
+
   scope.gridColumns = [
-   { field: 'firstName', displayName: 'First Name'},
-   { field: 'lastName', displayName: 'Last Name'}
+    {
+      field: 'firstName',
+      displayName: 'First Name'
+    },
+    {
+      field: 'lastName',
+      displayName: 'Last Name',
+      headerCellTemplate: 'templates/url-of-header-template.html'
+    }
   ];
-  scope.sortingOptions = { field: 'lastName', reverse: false };
+
+  scope.sortingOptions = {
+    field: 'lastName',
+    reverse: false
+  };
 ```
 ```html
 <iui-table 
@@ -50,6 +62,8 @@ Adding the iui-table directive to your markup:
   row-template="'/modules/request-center/templates/requests-row.html'" 
   sorting-options="sortingOption" 
   table-class="'table-names'" 
+  table-caption="Table of Names"
+  hide-table-caption="false"
   server-side-sorting="false"></iui-table>
 ```
 <dl>
@@ -63,6 +77,10 @@ Adding the iui-table directive to your markup:
 	<dd><code>String</code> - allows a custom row template to be passed in</dd>
 	<dt>sortingOptions</dt>
 	<dd><code>Object</code> - with two properties field: <code>String</code> and reverse: <code>Boolean</code></dd>
+  <dt>tableCaption</dt>
+  <dd><code>String</code> - gives the table a caption</dd>
+  <dt>hideTableCaption</dt>
+  <dd><code>Boolean</code> - puts a class of sr-only on the table caption. That way the heading is still visible to screen readers</dd>
 	<dt>tableClass</dt>
 	<dd><code>String</code> - passes in class to table. You can chain table classes like 'class1 class2'</dd>
 	<dt>serverSideSorting</dt>
