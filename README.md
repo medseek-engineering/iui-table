@@ -40,7 +40,8 @@ Adding the iui-table directive to your markup:
   scope.gridColumns = [
     {
       field: 'firstName',
-      displayName: 'First Name'
+      displayName: 'First Name',
+      columnClass: 'table-column-first-name'
     },
     {
       field: 'lastName',
