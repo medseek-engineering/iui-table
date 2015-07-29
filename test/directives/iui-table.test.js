@@ -5,6 +5,8 @@
     var scope,
       element,
       el,
+      iuiTable = {},
+      pagination = {},
       additionalCharacters = [
         {
           codeName: 'The Chief',
@@ -87,74 +89,74 @@
       element = angular.element('<iui-table row-data="rowData" display-columns="displayColumns" table-class="\'custom-class-1 customClass2\'"></iui-table>');
       el = $compile(element)(scope);
       scope.$digest();
-
+      iuiTable.tableElements = el.find('table');
+      iuiTable.theadElements = el.find('thead');
+      iuiTable.tbodyElements = el.find('tbody');
+      iuiTable.trElements = el.find('tr');
+      iuiTable.thElements = el.find('th');
+      iuiTable.tdElements = el.find('td');
     }));
     describe('is a semantic table structure', function () {
       it('contains a single <table>', function () {
-        expect(el.find('table').length).toBe(1);
+        expect(iuiTable.tableElements.length).toBe(1);
       });
 
       it('contains a single <thead>', function () {
-        expect(el.find('thead').length).toBe(1);
+        expect(iuiTable.theadElements.length).toBe(1);
       });
 
       it('has a <tbody>', function () {
-        expect(el.find('tbody').length).toBe(1);
+        expect(iuiTable.tbodyElements.length).toBe(1);
       });
 
     });
     describe('can be customized', function () {
       it('<table> can have multiple CSS classes passed in', function () {
-        var tableElement = el.find('table').eq(0);
-        expect(tableElement.hasClass('custom-class-1')).toBe(true);
-        expect(tableElement.hasClass('customClass2')).toBe(true);
+        expect(iuiTable.tableElements.eq(0).hasClass('custom-class-1')).toBe(true);
+        expect(iuiTable.tableElements.eq(0).hasClass('customClass2')).toBe(true);
       });
       it('<th> has a class name based on the field \'iui-table-header-{{columnHeader.field}}\'', function () {
         //iui-table-header-{{column.field}}
-        var thElements = el.find('th');
-        expect(thElements.eq(0).hasClass('iui-table-header-codename')).toBe(true);
-        expect(thElements.eq(1).hasClass('iui-table-header-agency')).toBe(true);
+        expect(iuiTable.thElements.eq(0).hasClass('iui-table-header-codename')).toBe(true);
+        expect(iuiTable.thElements.eq(1).hasClass('iui-table-header-agency')).toBe(true);
         // testing lowercase filter
-        expect(thElements.eq(0).hasClass('iui-table-header-codeName')).toBe(false);
+        expect(iuiTable.thElements.eq(0).hasClass('iui-table-header-codeName')).toBe(false);
       });
       it('<td> has a class name based on the field \'iui-table-{{column.field}}\'', function () {
         //iui-table-header-{{column.field}}
-        var tdElements = el.find('td');
-        expect(tdElements.eq(0).hasClass('iui-table-codename')).toBe(true);
-        expect(tdElements.eq(1).hasClass('iui-table-agency')).toBe(true);
+        expect(iuiTable.tdElements.eq(0).hasClass('iui-table-codename')).toBe(true);
+        expect(iuiTable.tdElements.eq(1).hasClass('iui-table-agency')).toBe(true);
         // testing lowercase filter
-        expect(tdElements.eq(0).hasClass('iui-table-codeName')).toBe(false);
+        expect(iuiTable.tdElements.eq(0).hasClass('iui-table-codeName')).toBe(false);
       });
       it('<th> has a custom class', function () {
         //code-name-custom-class agencyCustomClass
-        var thElements = el.find('th');
-        expect(thElements.eq(0).hasClass('code-name-custom-class')).toBe(true);
-        expect(thElements.eq(1).hasClass('agencyCustomClass')).toBe(true);
-        expect(thElements.eq(1).hasClass('AgencyCustomClass')).toBe(false);
+        expect(iuiTable.thElements.eq(0).hasClass('code-name-custom-class')).toBe(true);
+        expect(iuiTable.thElements.eq(1).hasClass('agencyCustomClass')).toBe(true);
+        expect(iuiTable.thElements.eq(1).hasClass('AgencyCustomClass')).toBe(false);
       });
       it('<td> has a custom class', function () {
         //code-name-custom-class agencyCustomClass
-        var tdElements = el.find('td');
-        expect(tdElements.eq(0).hasClass('code-name-custom-class')).toBe(true);
-        expect(tdElements.eq(1).hasClass('agencyCustomClass')).toBe(true);
-        expect(tdElements.eq(1).hasClass('AgencyCustomClass')).toBe(false);
+        expect(iuiTable.tdElements.eq(0).hasClass('code-name-custom-class')).toBe(true);
+        expect(iuiTable.tdElements.eq(1).hasClass('agencyCustomClass')).toBe(true);
+        expect(iuiTable.tdElements.eq(1).hasClass('AgencyCustomClass')).toBe(false);
       });
     });
     describe('can display a 2 column table with 3 rows of data', function () {
       it('contains two <th>', function () {
-        expect(el.find('th').length).toBe(2);
+        expect(iuiTable.thElements.length).toBe(2);
       });
 
       it('contains four <tr>', function () {
-        expect(el.find('tr').length).toBe(4);
+        expect(iuiTable.trElements.length).toBe(4);
       });
 
       it('contains six <td>', function () {
-        expect(el.find('td').length).toBe(6);
+        expect(iuiTable.tdElements.length).toBe(6);
       });
 
       it('third row second column is KAOS', function () {
-        expect(el.find('td').eq(5).text().trim()).toBe('KAOS');
+        expect(iuiTable.tdElements.eq(5).text().trim()).toBe('KAOS');
       });
 
       it('pagination controls are not visible', function () {
@@ -179,15 +181,16 @@
           }
         ];
         scope.$digest();
+        iuiTable.thElements = el.find('th');
+        iuiTable.icon = el.find('i').eq(0);
       });
       it('text from custom header cell template displays', function () {
-        expect(el.find('th').eq(1).text().trim()).toBe('Zis is KAOS!');
+        expect(iuiTable.thElements.eq(1).text().trim()).toBe('Zis is KAOS!');
       });
       it('icon from custom header cell template displays', function () {
-        var iconElement = el.find('i').eq(0);
-        expect(iconElement.hasClass('glyphicon')).toBe(true);
-        expect(iconElement.hasClass('glyphicon-star')).toBe(true);
-        expect(iconElement.hasClass('KAOS')).toBe(false);
+        expect(iuiTable.icon.hasClass('glyphicon')).toBe(true);
+        expect(iuiTable.icon.hasClass('glyphicon-star')).toBe(true);
+        expect(iuiTable.icon.hasClass('KAOS')).toBe(false);
       });
     });
     describe('only shows data defined in the columnDefintion ARRAY', function () {
@@ -206,12 +209,21 @@
         // Add additional Chacters to the list
         Array.prototype.push.apply(scope.rowData, additionalCharacters);
         scope.$digest();
-        
+
+        iuiTable.trElements = el.find('tr');
+        iuiTable.thElements = el.find('th');
+        iuiTable.tdElements = el.find('td');
+
+        // Defining pagination control elements
+        pagination.firstButton = el.find('button').eq(0);
+        pagination.previousButton = el.find('button').eq(1);
+        pagination.nextButton = el.find('button').eq(2);
+        pagination.lastButton = el.find('button').eq(3);
       });
 
       it('<table> should contain 11 <tr>', function () {
         // one tr is in the thead
-        expect(el.find('tr').length).toBe(11);
+        expect(iuiTable.trElements.length).toBe(11);
       });
 
       describe('sorting - ', function () {
@@ -241,18 +253,45 @@
         });
 
         it('should display the next page of results when the Next button is pressed', function() {
-          var nextButton = el.find('button').eq(2);
-          nextButton.triggerHandler('click');
+          pagination.nextButton.triggerHandler('click');
           expect(el.find('tr').length).toBe(4);
         });
 
+        it('next button and last page button should be disabled when on the last page', function () {
+          var lastButton = el.find('button').eq(3);
+          expect(pagination.nextButton.attr('disabled')).toBeFalsy();
+          expect(lastButton.attr('disabled')).toBeFalsy();
+          pagination.nextButton.triggerHandler('click');
+          expect(pagination.nextButton.attr('disabled')).toBeTruthy();
+          expect(lastButton.attr('disabled')).toBeTruthy();
+        });
+
         it('should display the previous page of results when the Previous button is pressed', function() {
-          var previousButton = el.find('button').eq(1);
-          previousButton.triggerHandler('click');
+          pagination.nextButton.triggerHandler('click');
+          pagination.previousButton.triggerHandler('click');
           expect(el.find('tr').length).toBe(11);
         });
 
-        //TODO: Last Page & First Page buttons & Inputing Custom Page Number
+        it('should display the first page of results when the First page button is pressed', function() {
+          pagination.nextButton.triggerHandler('click');
+          pagination.firstButton.triggerHandler('click');
+          expect(el.find('tr').length).toBe(11);
+        });
+
+        it('should display the last page of results when the Last page button is pressed', function() {
+          pagination.lastButton.triggerHandler('click');
+          expect(el.find('tr').length).toBe(4);
+        });
+
+        it('previous button and first page button should be disabled when on the first page', function () {
+          expect(pagination.previousButton.attr('disabled')).toBeTruthy();
+          expect(pagination.firstButton.attr('disabled')).toBeTruthy();
+          pagination.nextButton.triggerHandler('click');
+          expect(pagination.previousButton.attr('disabled')).toBeFalsy();
+          expect(pagination.firstButton.attr('disabled')).toBeFalsy();
+        });
+
+        //TODO: Inputing Custom Page Number
       });
     });
     

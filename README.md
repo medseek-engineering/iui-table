@@ -67,6 +67,9 @@ Adding the iui-table directive to your markup:
   hide-table-caption="false"
   server-side-sorting="false"></iui-table>
 ```
+
+## Directive Attributes
+
 <dl>
 	<dt>displayColumns</dt>
 	<dd><code>Array</code> <b>Required</b> - defines the columns in the grid</dd>
