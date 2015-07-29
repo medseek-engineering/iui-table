@@ -53,6 +53,7 @@ module.exports = function (config) {
 
     files: [
       // app core dependencies
+      'node_modules/jquery/dist/jquery.js',
       'test/test-helper.js',
       'node_modules/ui-core/lib/content/js/angular.js',
       'node_modules/ui-core/lib/content/js/main.js',

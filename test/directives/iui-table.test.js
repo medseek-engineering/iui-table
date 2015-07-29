@@ -254,7 +254,7 @@
 
         it('should display the next page of results when the Next button is pressed', function() {
           pagination.nextButton.triggerHandler('click');
-          expect(el.find('tr').length).toBe(4);
+          expect(el.find('tbody > tr').length).toBe(3);
         });
 
         it('next button and last page button should be disabled when on the last page', function () {
