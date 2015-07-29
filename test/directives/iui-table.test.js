@@ -90,11 +90,11 @@
       el = $compile(element)(scope);
       scope.$digest();
       iuiTable.tableElements = el.find('table');
-      iuiTable.theadElements = el.find('thead');
-      iuiTable.tbodyElements = el.find('tbody');
-      iuiTable.trElements = el.find('tr');
-      iuiTable.thElements = el.find('th');
-      iuiTable.tdElements = el.find('td');
+      iuiTable.theadElements = el.find('table > thead');
+      iuiTable.tbodyElements = el.find('table > tbody');
+      iuiTable.trElements = el.find('tbody > tr');
+      iuiTable.thElements = el.find('thead > tr > th');
+      iuiTable.tdElements = el.find('tbody > tr > td');
     }));
     describe('is a semantic table structure', function () {
       it('contains a single <table>', function () {
@@ -148,7 +148,7 @@
       });
 
       it('contains four <tr>', function () {
-        expect(iuiTable.trElements.length).toBe(4);
+        expect(iuiTable.trElements.length).toBe(3);
       });
 
       it('contains six <td>', function () {
@@ -210,7 +210,7 @@
         Array.prototype.push.apply(scope.rowData, additionalCharacters);
         scope.$digest();
 
-        iuiTable.trElements = el.find('tr');
+        iuiTable.trElements = el.find('tbody > tr');
         iuiTable.thElements = el.find('th');
         iuiTable.tdElements = el.find('td');
 
@@ -221,9 +221,8 @@
         pagination.lastButton = el.find('button').eq(3);
       });
 
-      it('<table> should contain 11 <tr>', function () {
-        // one tr is in the thead
-        expect(iuiTable.trElements.length).toBe(11);
+      it('<table> should contain 10 <tr> in the <tbody>', function () {
+        expect(iuiTable.trElements.length).toBe(10);
       });
 
       describe('sorting - ', function () {
