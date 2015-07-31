@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+	<head>
+		<title>iuiTable</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.13/angular.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="lib/iui-table.js"></script>
+		<script>
+			var app = angular.module('app', ['iui.table']);
+      app.root = '/';
+      app.controller('tableTestController', ['$scope', function(scope) {
+        scope.displayColumns = [
+          {
+            field: 'codeName',
+            displayName: 'Code Name',
+            columnClass: 'code-name-custom-class'
+          },
+          {
+            field: 'agency',
+            displayName: 'Agency',
+            columnClass: 'agencyCustomClass'
+          }
+        ];
+        scope.rowData = [
+          {
+            name: 'Maxwell Smart',
+            codeName: 'Agent 86',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 99',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Mr. Big',
+            agency: 'KAOS'
+          },
+          {
+            codeName: 'The Chief',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Hymie the Robot',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 8',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 13',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 44',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Ludwig Von Siegfried',
+            agency: 'KAOS'
+          },
+          {
+            codeName: 'Shtarker',
+            agency: 'KAOS'
+          },
+          {
+            codeName: 'The Claw',
+            agency: 'KAOS'
+          },
+          {
+            codeName: 'Spinoza',
+            agency: 'KAOS'
+          },
+          {
+            codeName: 'Fang',
+            agency: 'CONTROL'
+          }
+        ];
+
+        scope.sortingOptions = {
+          field: 'lastName',
+          reverse: false
+        };
+      }]);
+		</script>
+	</head>
+	<body ng-app="app" ng-controller="tableTestController">
+		<div class="container-fluid">
+      <h1>iui-table</h1>
+			<iui-table 
+				display-columns="displayColumns" 
+				row-data="rowData" 
+				table-class="'table-names'" 
+        page-size="5"
+				table-caption="'Table of Names'"></iui-table>
+		</div>
+	</body>
+</html>

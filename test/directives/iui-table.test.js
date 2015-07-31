@@ -52,8 +52,8 @@
 
     beforeEach(function () {
       module('app');
-      //pagination module must be included as a project dependency.
-      module('pagination');
+      // using the base iuiTable module. iui.table includes templates, but requires compiling `grunt pack`
+      module('iuiTable');
       module('templates');
     });
 
@@ -160,7 +160,7 @@
       });
 
       it('pagination controls are not visible', function () {
-        expect(el.find('ul').length).toBe(0);
+        expect(el.find('.iui-pager-controls').length).toBe(0);
       });
     });
     describe('table header can have a custom template', function () {
@@ -241,6 +241,28 @@
           expect(el.find('td').eq(1).text().trim()).toBe('CONTROL');
           expect(el.find('td').eq(3).text().trim()).toBe('CONTROL');
         });
+        describe('sorting can be turned off', function () {
+          beforeEach(function() {
+            scope.displayColumns = [
+              {
+                field: 'codeName',
+                displayName: 'Code Name',
+                columnClass: 'code-name-custom-class'
+              },
+              {
+                field: 'agency',
+                displayName: 'Agency',
+                columnClass: 'agencyCustomClass',
+                sortable: false
+              }
+            ];
+            scope.$digest();
+          });
+          it('Agency column should not be sortable when sorting is disabled', function () {
+            var secondColumnHeader = el.find('a');
+            expect(secondColumnHeader.length).toBe(1);
+          });
+        });
       });
 
 
@@ -248,7 +270,7 @@
 
         it('should show controls', function () {
           // pagination control is in a ul
-          expect(el.find('ul').length).toBe(1);
+          expect(el.find('.iui-pager-controls').length).toBe(1);
         });
 
         it('should display the next page of results when the Next button is pressed', function() {
@@ -291,6 +313,7 @@
         });
 
         //TODO: Inputing Custom Page Number
+        //TODO: write test for changing page-size
       });
     });
     

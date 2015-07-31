@@ -24,4 +24,38 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.initConfig({
+    html2js: {
+      options: {
+        base: 'lib',
+        rename: function(moduleName) {
+          return '/$iui-table/' + moduleName;
+        },
+        module: 'iuiTableTemplates',
+        singleModule: true,
+        useStrict: true,
+        htmlmin: {
+          collapseBooleanAttributes: false,
+          collapseWhitespace: true,
+          removeAttributeQuotes: false,
+          removeComments: true,
+          removeEmptyAttributes: false,
+          removeRedundantAttributes: true,
+          removeScriptTypeAttributes: true,
+          removeStyleLinkTypeAttributes: true
+        }
+      },
+      dist: {
+        src: ['lib/**/*.html'],
+        dest: 'lib/iui-table-templates.js'
+      }
+    },
+    concat: {
+      dist: {
+        src: ['lib/iui-table-module-header.js','lib/services/*.js', 'lib/filters/*.js', 'lib/directives/*.js', 'lib/iui-table-templates.js'],
+        dest: 'lib/iui-table.js'
+      }
+    }
+  });
+
 };

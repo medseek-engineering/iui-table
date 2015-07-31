@@ -65,6 +65,7 @@ Adding the iui-table directive to your markup:
   table-class="'table-names'" 
   table-caption="Table of Names"
   hide-table-caption="false"
+  page-size="10"
   server-side-sorting="false"></iui-table>
 ```
 
@@ -87,6 +88,8 @@ Adding the iui-table directive to your markup:
   <dd><code>Boolean</code> - puts a class of sr-only on the table caption. That way the heading is still visible to screen readers</dd>
 	<dt>tableClass</dt>
 	<dd><code>String</code> - passes in class to table. You can chain table classes like 'class1 class2'</dd>
+  <dt>pageSize</dt>
+  <dd><code>Counting Number</code> - defaults to 10</dd>
 	<dt>serverSideSorting</dt>
 	<dd><code>Boolean</code> - if there is server side sorting set to true</dd>
 </dl>

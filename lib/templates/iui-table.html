@@ -35,28 +35,22 @@
     </thead>
     <tbody ng-if="!iuiTable.serverSideSorting">
       <tr
-        ng-repeat="row in iuiTable.rowData | orderBy:iuiTable.sortingOptions.field:iuiTable.sortingOptions.reverse | startFrom:(iuiTable.pagingOption.currentPage-1)*iuiTable.pagingOption.itemsPerPage | limitTo:iuiTable.pagingOption.itemsPerPage"
+        ng-repeat="row in iuiTable.rowData | orderBy:iuiTable.sortingOptions.field:iuiTable.sortingOptions.reverse | startFrom:(iuiTable.pagingOption.currentPage-1)*iuiTable.pagingOption.pageSize | limitTo:iuiTable.pagingOption.pageSize"
         ng-include="(iuiTable.rowTemplate)?iuiTable.rowTemplate:iuiTable.settings.defaultRowTemplate">
       </tr>
     </tbody>
     <tbody ng-if="iuiTable.serverSideSorting">
       <tr
-        ng-repeat="row in iuiTable.rowData | startFrom:(iuiTable.pagingOption.currentPage-1)*iuiTable.pagingOption.itemsPerPage | limitTo:iuiTable.pagingOption.itemsPerPage"
+        ng-repeat="row in iuiTable.rowData | startFrom:(iuiTable.pagingOption.currentPage-1)*iuiTable.pagingOption.pageSize | limitTo:iuiTable.pagingOption.pageSize"
         ng-include="(iuiTable.rowTemplate)?iuiTable.rowTemplate:iuiTable.settings.defaultRowTemplate">
       </tr>
     </tbody>
   </table>
-  <iui-pagination
+  ddd {{iuiTable.pagingOption.currentPage}}
+  <iui-pager 
     ng-if="iuiTable.rowData.length > 0 && !iuiTable.hideTablePager"
-    boundary-links="true"
-    total-items="iuiTable.rowData.length"
-    items-per-page="iuiTable.pagingOption.itemsPerPage"
     page="iuiTable.pagingOption.currentPage"
-    num-pages="iuiTable.pagingOption.pageSize"
-    set-number-of-pages="iuiTable.setNumberOfPages"
-    previous-text="Prev"
-    next-text="Next"
-    first-text="First"
-    last-text="Last">
-  </iui-pagination>
+    page-size="iuiTable.pagingOption.pageSize"
+    total-records="iuiTable.rowData.length">
+  </iui-pager>
 </div>
