@@ -11,15 +11,22 @@ Add to package.json:
 }
 ```
 
+
+## Installation (with Influence Health ui-core)
+
 Use in app.js:
 ```javascript
-ui.use(require('iui-table'));
+ui.use(require('iui.table'));
 ```
 
-Add 'pagination' as a module dependency in includeDependencies.js
-```javascript
-app.ng.requires.push('pagination');
-```
+
+## Installation (without ui-core / typical)
+
+Everything you need is already minified 
+node_modules/iui-table/dist/iui-table.min.js
+
+As soon as you've got the file included in your page you just need to declare a dependency on the iui.table module:
+angular.module('myModule', ['iui.table']);
 
 
 ## Usage
@@ -93,3 +100,6 @@ Adding the iui-table directive to your markup:
 	<dt>serverSideSorting</dt>
 	<dd><code>Boolean</code> - if there is server side sorting set to true</dd>
 </dl>
+
+## Build
+**Note:** if you make changes, you must run **gulp** to rebuild the combined files in the 'dist' directory. You may need to also update the package.json version number.

@@ -3,6 +3,7 @@
 
   describe('iui-table directive', function () {
     var scope,
+      compile,
       element,
       el,
       iuiTable = {},
@@ -89,6 +90,7 @@
       element = angular.element('<iui-table row-data="rowData" display-columns="displayColumns" table-class="\'custom-class-1 customClass2\'"></iui-table>');
       el = $compile(element)(scope);
       scope.$digest();
+      compile = $compile;
       iuiTable.tableElements = el.find('table');
       iuiTable.theadElements = el.find('table > thead');
       iuiTable.tbodyElements = el.find('table > tbody');
@@ -312,10 +314,70 @@
           expect(pagination.firstButton.attr('disabled')).toBeFalsy();
         });
 
-        //TODO: Inputing Custom Page Number
         //TODO: write test for changing page-size
       });
     });
-    
+    describe('Table pager', function () {
+      beforeEach(function () {
+        el = angular.element('<iui-pager total-records="resultsCount" page-size="pageSize" page="page">This is a test</iui-pager>');
+        compile(el)(scope);
+        scope.page =1;
+        scope.pageSize =10;
+        scope.resultsCount = [1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3].length;
+        scope.$digest();
+      });
+      it('Total count is a number', function () {
+        var iscope = el.isolateScope();
+        expect(iscope.totalRecords).toEqual(jasmine.any(Number));
+        expect(iscope.totalRecords).toBeGreaterThan(0);
+        expect(iscope.totalRecords).toEqual(33);
+      });
+      it('Page size is a number', function () {
+        var iscope = el.isolateScope();
+        expect(iscope.pageSize).toEqual(jasmine.any(Number));
+        expect(iscope.pageSize).toEqual(10);
+      });
+      it('Page count is 4', function () {
+        var iscope = el.isolateScope();
+        expect(iscope.pageCount()).toEqual(4);
+      });
+      describe('Change pages',function(){
+        it('Go to last page', function () {
+          var iscope = el.isolateScope(),
+            lastButton = el.find('.table-pager-last');
+          spyOn(iscope,'getLastPage');
+          lastButton.trigger('click');
+          expect(iscope.getLastPage).toHaveBeenCalled();
+        });
+        it('Go to first page', function () {
+          var iscope = el.isolateScope(),
+            button = el.find('.table-pager-first');
+          spyOn(iscope,'getFirstPage');
+          button.trigger('click');
+          expect(iscope.getFirstPage).toHaveBeenCalled();
+        });
+        it('Go to next page, then previous page', function () {
+          var iscope = el.isolateScope(),
+            buttonN = el.find('.table-pager-next'),
+            buttonP = el.find('.table-pager-prev');
+          spyOn(iscope,'getNextPage');
+          spyOn(iscope,'getPreviousPage');
+          buttonN.trigger('click');
+          buttonP.trigger('click');
+          expect(iscope.getNextPage).toHaveBeenCalled();
+          expect(iscope.getPreviousPage).toHaveBeenCalled();
+        });
+        it('Go to certain page', function () {
+          var iscope = el.isolateScope(),
+            i = el.find('input[type=number]');
+          spyOn(iscope, 'jumpToPage');
+          i.val('2');
+          i.trigger('input');
+          expect(iscope.jumpToPage).toHaveBeenCalled();
+          expect(iscope.jumpToPage).toHaveBeenCalledWith(2);
+        });
+
+      });
+    });
   });
 }(window.app));
