@@ -4,7 +4,91 @@
 		<title>iuiTable</title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.13/angular.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <script src="lib/iui-table.js"></script>
+    <style type="text/css">
+      .container-fluid {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .agencyCustomClass {
+        width: 200px;
+      }
+      /* Begin of default styles */
+
+      .iui-sort-heading {
+        display: inline-block;
+        text-decoration: none;
+        padding-right: 20px;
+        position: relative;
+      }
+      .iui-sort-heading:after {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-top: -3px;
+        content: ' ';
+        width: 0;
+        height: 0;
+        opacity: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid #CCC;
+        -moz-transition: all 500ms ease-in-out;
+        -o-transition: all 500ms ease-in-out;
+        -webkit-transition: all 500ms ease-in-out;
+        transition: all 500ms ease-in-out;
+      }
+      .iui-sort-heading:focus:after {
+        opacity: 1;
+      }
+      .iui-sort-heading:hover, .iui-sort-heading:focus {
+        text-decoration: none;
+      }
+      .iui-sort-heading.sorted:after {
+        opacity: 1;
+      }
+      .iui-sort-heading.sorted.reversed:after {
+        -moz-transform: rotateX(180deg);
+        -ms-transform: rotateX(180deg);
+        -webkit-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+      }
+      .pager-first-triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 8.7px 5px 0;
+  border-color: transparent #0072bc transparent transparent;
+  margin-left: 2px;
+  margin-left: 0;
+}
+
+.pager-first-bar {
+  width: 10px;
+  border-left: 2px solid #0072bc;
+  margin-top: -6px;
+  height: 12px;
+  margin-left: -3px;
+}
+
+.pager-last-triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 0 5px 8.7px;
+  border-color: transparent transparent transparent #0072bc;
+  margin-left: -1px;
+}
+
+.pager-last-bar {
+  width: 10px;
+  border-left: 2px solid #0072bc;
+  margin-top: -6px;
+  height: 12px;
+  margin-left: 1px;
+}
+    </style>
+    <script src="lib/dist/iui-table.min.js"></script>
 		<script>
 			var app = angular.module('app', ['iui.table']);
       app.root = '/';
@@ -74,13 +158,48 @@
           {
             codeName: 'Fang',
             agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 1',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 2',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 3',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 4',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 5',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 6',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 7',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 9',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 10',
+            agency: 'CONTROL'
+          },
+          {
+            codeName: 'Agent 11',
+            agency: 'CONTROL'
           }
         ];
-
-        scope.sortingOptions = {
-          field: 'lastName',
-          reverse: false
-        };
       }]);
 		</script>
 	</head>
@@ -91,7 +210,7 @@
 				display-columns="displayColumns" 
 				row-data="rowData" 
 				table-class="'table-names'" 
-        page-size="5"
+        page-size="10"
 				table-caption="'Table of Names'"></iui-table>
 		</div>
 	</body>
