@@ -1,0 +1,149 @@
+<!doctype html>
+<html ng-app="styleGuideApp" ng-controller="SGMainCtrl">
+  <head>
+    <title>iui-table Style Guide: components</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.13/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="../lib/dist/iui-table.min.js"></script>
+    <script src="scripts/style_guide_app.js"></script>
+    
+    <link rel="stylesheet" href="http://medseek-engineering.github.io/iui-general/style-guide/stylesheets/main.css">
+    <link rel="stylesheet" href="../lib/dist/iui-table.css">
+  </head>
+  <body role="document" class="sg-body">
+    <header class="sg-header clearfix" role="banner">
+      <h1 class="sg-title">
+        <a href="index.html">
+            <img src="images/sg-empower-revised-logo.svg" alt="iui-table Revised Style Guide logo" class="sg-empower-logo">
+        </a>
+      </h1>
+      <nav class="navbar navbar-default sg-nav-main">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sg-navbar-main" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="sg-navbar-main">
+            <ul class="nav navbar-nav">              
+              
+              <li role="presentation">
+                <a role="menuitem" href="index.html">directives</a>
+              </li>
+              
+              <li class="active" role="presentation">
+                <a role="menuitem" href="components.html">components</a>
+              </li>
+              
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header>
+    <main class="sg-wrapper clearfix" role="main">
+        <aside class="sg-sidebar hidden-xs" role="complementary">
+            <nav class="sg-nav-secondary" role="navigation">
+                <ul role="menu">
+                  
+                  <li role="presentation" class='sg-is-parent-item'>
+                    <a href="" ng-click="scrollTo('responsiveTable')">Responsive Tables</a>
+                  </li>
+                  
+                </ul>
+            </nav>
+        </aside>
+        <div class="sg-element-wrapper" id="top">
+          <iui-alert-placeholder id="alert_appTop"></iui-alert-placeholder>
+<h1 id="responsiveTable" class="styleguide">Responsive Tables</h1>
+<p class="styleguide">These CSS classes allow for <code class="styleguide">&lt;table&gt;</code>s to appear as a card style layout for smaller screens.</p>
+<dl class="dl-horizontal dt-as-left-aligned short-list">
+  <dt><code>.responsive</code></dt>
+  <dd>for mobile (max-width: 767px)</dd>
+  <dt><code>.responsive-sm</code></dt>
+  <dd>for tablet (min-width: 768px and max-width: 991px)</dd>
+  <dt><code>.responsive-md</code></dt>
+  <dd>for small desktop (min-width: 992px and max-width: 1199px)</dd>
+</dl>
+<p class="styleguide">All responsive tables must have the <code class="styleguide">.table</code> class</p><p class="styleguide">The table headers must be repeated using the <code class="styleguide">data-header</code> attribute on each table cell</p><p class="styleguide">We specifically did not create a <code class="styleguide">.responsive-lg</code> class because at that point, we should be using <code class="styleguide">&lt;dl class=&quot;dl-horizontal dt-as-left-aligned&quot;&gt;</code> instead</p><div class="codeExample">
+  <div class="exampleOutput">
+    
+<table class="table responsive responsive-sm responsive-md">
+  <thead>
+    <tr>
+      <th>Table Header 1</th>
+      <th>Table Header 2</th>
+      <th>Table Header 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-header="Table Header 1">Table Body 1</td>
+      <td data-header="Table Header 2">Table Body 2</td>
+      <td data-header="Table Header 3">Table Body 3</td>
+    </tr>
+    <tr>
+      <td data-header="Table Header 1">Table Body 1</td>
+      <td data-header="Table Header 2">Table Body 2</td>
+      <td data-header="Table Header 3">Table Body 3</td>
+    </tr>
+    <tr>
+      <td data-header="Table Header 1">Table Body 1</td>
+      <td data-header="Table Header 2">Table Body 2</td>
+      <td data-header="Table Header 3">Table Body 3</td>
+    </tr>
+  </tbody>
+</table>
+
+
+  </div>
+  <div class="codeBlock">
+    <div class="highlight" ng-non-bindable>
+      <pre><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table responsive responsive-sm responsive-md"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 1<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 2<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Table Header 3<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">data-header=</span><span class="s">"Table Header 1"</span><span class="nt">&gt;</span>Table Body 1<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">data-header=</span><span class="s">"Table Header 2"</span><span class="nt">&gt;</span>Table Body 2<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">data-header=</span><span class="s">"Table Header 3"</span><span class="nt">&gt;</span>Table Body 3<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">data-header=</span><span class="s">"Table Header 1"</span><span class="nt">&gt;</span>Table Body 1<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">data-header=</span><span class="s">"Table Header 2"</span><span class="nt">&gt;</span>Table Body 2<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">data-header=</span><span class="s">"Table Header 3"</span><span class="nt">&gt;</span>Table Body 3<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">data-header=</span><span class="s">"Table Header 1"</span><span class="nt">&gt;</span>Table Body 1<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">data-header=</span><span class="s">"Table Header 2"</span><span class="nt">&gt;</span>Table Body 2<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td</span> <span class="na">data-header=</span><span class="s">"Table Header 3"</span><span class="nt">&gt;</span>Table Body 3<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span></pre>
+    </div>
+  </div>
+</div>
+
+    </div>
+    <!-- MOBILE ONLY SIDENAV -->
+    <aside class="sg-sidebar visible-xs" role="complementary">
+        <nav class="sg-nav-secondary" role="navigation">
+            <ul role="menu">
+                
+                <li role="presentation"><a href="#responsiveTable">Responsive Tables</a></li>
+                
+            </ul>
+        </nav>
+    </aside>
+    </main>    
+
+  </body>
+</html>
