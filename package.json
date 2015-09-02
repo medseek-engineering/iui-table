@@ -22,13 +22,17 @@
     "lodash": "^2.4.1"
   },
   "devDependencies": {
-    "ui-core": "git+ssh://git@github.com:medseek-engineering/ui-core.git",
+    "browser-sync": "^2.8.2",
     "delayed-stream": "0.0.5",
-    "gulp": "^3.8.6",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-compass": "^2.1.0",
     "gulp-concat": "~2.1.7",
+    "gulp-filter": "^3.0.0",
+    "gulp-hologram": "^1.2.0",
     "gulp-html2js": "^0.2.0",
     "gulp-jshint": "^1.11.2",
-    "gulp-minify-css": "~0.3.4",
+    "gulp-minify-css": "^1.2.0",
     "gulp-ng-html2js": "^0.2.0",
     "gulp-rename": "~0.2.2",
     "gulp-uglify": "~0.2.0",
@@ -45,6 +49,8 @@
     "karma-jasmine": "~0.2.2",
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "karma-requirejs": "~0.2.0",
-    "karma-spec-reporter": "0.0.6"
+    "karma-spec-reporter": "0.0.6",
+    "iui-general": "git+ssh://git@github.com:medseek-engineering/iui-general.git",
+    "ui-core": "git+ssh://git@github.com:medseek-engineering/ui-core.git"
   }
 }

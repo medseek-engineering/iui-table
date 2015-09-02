@@ -13,14 +13,6 @@ module.exports = function (config) {
 
     logLevel: config.LOG_INFO,
 
-    customLaunchers: {
-      TinyChrome: {
-        base: 'Chrome',
-        flags: ['--window-size=0,0']
-      }
-    },
-
-    //Firefox currently working on build servers - don't change in repo!
     browsers: ['Firefox'],
 
     captureTimeout: 60000,
@@ -57,15 +49,16 @@ module.exports = function (config) {
       'test/test-helper.js',
       'node_modules/ui-core/lib/content/js/angular.js',
       'node_modules/ui-core/lib/content/js/main.js',
+      'node_modules/lodash/dist/lodash.min.js',
       'test/angular-mocks.js',
 
       // app module dependencies
-      'lib/directives/*.js',
-      'lib/services/*.js',
-      'lib/filters/*.js',
+      'lib/src/**/*.js',
+      'lib/src/*.js',
 
       //directive templates
-      'lib/**/*.html',
+      'lib/src/**/*.html',
+      'lib/src/**/*.svg',
       // test scripts
       'test/**/*.test.js'
     ],
@@ -73,16 +66,14 @@ module.exports = function (config) {
     reporters: ['coverage', 'progress', 'html'],
 
     preprocessors: {
-      'lib/**/*.html': ['ng-html2js'],
-      'lib/directives/*.js': ['coverage'],
-      'lib/filters/*.js': ['coverage'],
-      'lib/services/*.js': ['coverage']
+      'lib/src/**/*.html': ['ng-html2js'],
+      'lib/src/**/*.svg': ['ng-html2js']
     },
 
     ngHtml2JsPreprocessor: {
       // immitates ui-core
       prependPrefix: '/$iui-table',
-      stripPrefix: 'lib',
+      stripPrefix: 'lib/src',
       moduleName: 'templates'
     },
 
