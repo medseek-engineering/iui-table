@@ -1,7 +1,7 @@
 # iui-table
 Angular dynamic table directive
 
-[http://medseek-engineering.github.io/iui-table/style-guide](iui-table Examples)
+[iui-table Examples](http://medseek-engineering.github.io/iui-table/style-guide/ "iui-table Examples")
 
 
 ## Setup
@@ -33,3 +33,21 @@ angular.module('myModule', ['iui.table']);
 
 ## Build
 **Note:** if you make changes, you must run **gulp** to rebuild the combined files in the 'dist' directory. You may need to also update the package.json version number.
+
+## Changelog
+
+### 1.0.7
+
+- moving src files to src folder
+- including responsive table classes
+- implementing hologram
+- moving documentation to style guide
+- moving .jshint config to source from iui-general
+
+### 1.0.6
+
+making changes to templates
+
+### 1.0.0
+
+Created iui-table repo
