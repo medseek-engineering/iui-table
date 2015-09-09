@@ -1,0 +1,446 @@
+<!doctype html>
+<html ng-app="styleGuideApp" ng-controller="SGMainCtrl">
+  <head>
+    <title>iui-table Style Guide: directives</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.13/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="../lib/dist/iui-table.min.js"></script>
+    <script src="scripts/style_guide_app.js"></script>
+    
+    <link rel="stylesheet" href="http://medseek-engineering.github.io/iui-general/style-guide/stylesheets/main.css">
+    <link rel="stylesheet" href="../lib/dist/iui-table.css">
+  </head>
+  <body role="document" class="sg-body">
+    <header class="sg-header clearfix" role="banner">
+      <h1 class="sg-title">
+        <a href="index.html">
+            <img src="images/sg-empower-revised-logo.svg" alt="iui-table Revised Style Guide logo" class="sg-empower-logo">
+        </a>
+      </h1>
+      <nav class="navbar navbar-default sg-nav-main">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sg-navbar-main" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="sg-navbar-main">
+            <ul class="nav navbar-nav">              
+              
+              <li class="active" role="presentation">
+                <a role="menuitem" href="index.html">directives</a>
+              </li>
+              
+              <li role="presentation">
+                <a role="menuitem" href="components.html">components</a>
+              </li>
+              
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header>
+    <main class="sg-wrapper clearfix" role="main">
+        <aside class="sg-sidebar hidden-xs" role="complementary">
+            <nav class="sg-nav-secondary" role="navigation">
+                <ul role="menu">
+                  
+                  <li role="presentation" class='sg-is-parent-item'>
+                    <a href="" ng-click="scrollTo('iui-table')">iui-table</a>
+                  </li>
+                  
+                </ul>
+            </nav>
+        </aside>
+        <div class="sg-element-wrapper" id="top">
+          <iui-alert-placeholder id="alert_appTop"></iui-alert-placeholder>
+<h1 id="iui-table" class="styleguide">iui-table</h1>
+<p class="styleguide">Adding the iui-table directive to your markup:</p><script>app.controller('TableController', [function () {
+  var that = this;
+  that.data = [
+    {
+      firstName: 'Joe',
+      lastName: 'Smith'
+    },
+    {
+      firstName: 'Janet',
+      lastName: 'Doe'
+    }
+  ];
+  that.gridColumns = [
+    {
+      field: 'firstName',
+      displayName: 'First Name',
+      columnClass: 'table-column-first-name'
+    },
+    {
+      field: 'lastName',
+      displayName: 'Last Name'
+      //headerCellTemplate: 'templates/url-of-header-template.html'
+    }
+  ];
+  that.sortingOptions = {
+    field: 'lastName',
+    reverse: false
+  };
+}]);
+</script>
+<div class="codeBlock jsExample">
+  <div class="highlight">
+    <pre><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'TableController'</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Joe'</span><span class="p">,</span>
+      <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Smith'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">firstName</span><span class="p">:</span> <span class="s1">'Janet'</span><span class="p">,</span>
+      <span class="na">lastName</span><span class="p">:</span> <span class="s1">'Doe'</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">gridColumns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">field</span><span class="p">:</span> <span class="s1">'firstName'</span><span class="p">,</span>
+      <span class="na">displayName</span><span class="p">:</span> <span class="s1">'First Name'</span><span class="p">,</span>
+      <span class="na">columnClass</span><span class="p">:</span> <span class="s1">'table-column-first-name'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">field</span><span class="p">:</span> <span class="s1">'lastName'</span><span class="p">,</span>
+      <span class="na">displayName</span><span class="p">:</span> <span class="s1">'Last Name'</span>
+      <span class="c1">//headerCellTemplate: 'templates/url-of-header-template.html'</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">sortingOptions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">field</span><span class="p">:</span> <span class="s1">'lastName'</span><span class="p">,</span>
+    <span class="na">reverse</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">};</span>
+<span class="p">}]);</span></pre>
+  </div>
+</div>
+
+<div class="codeExample">
+  <div class="exampleOutput">
+    <div ng-controller="TableController as table">
+  <iui-table 
+    display-columns="table.gridColumns" 
+    row-data="table.data" 
+    hide-table-pager="false" 
+    sorting-options="table.sortingOption" 
+    table-class="'table-names responsive'" 
+    table-caption="'Table of Names'"
+    hide-table-caption="false"
+    page-size="10"
+    server-side-sorting="false"></iui-table>
+</div>
+
+  </div>
+  <div class="codeBlock">
+    <div class="highlight" ng-non-bindable>
+      <pre><span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">"TableController as table"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;iui-table</span> 
+    <span class="na">display-columns=</span><span class="s">"table.gridColumns"</span> 
+    <span class="na">row-data=</span><span class="s">"table.data"</span> 
+    <span class="na">hide-table-pager=</span><span class="s">"false"</span> 
+    <span class="na">sorting-options=</span><span class="s">"table.sortingOption"</span> 
+    <span class="na">table-class=</span><span class="s">"'table-names responsive'"</span> 
+    <span class="na">table-caption=</span><span class="s">"'Table of Names'"</span>
+    <span class="na">hide-table-caption=</span><span class="s">"false"</span>
+    <span class="na">page-size=</span><span class="s">"10"</span>
+    <span class="na">server-side-sorting=</span><span class="s">"false"</span><span class="nt">&gt;&lt;/iui-table&gt;</span>
+<span class="nt">&lt;/div&gt;</span></pre>
+    </div>
+  </div>
+</div>
+
+<h2>Directive Attributes</h2>
+
+<dl class="dl-horizontal dt-as-left-aligned short-list">
+  <dt>displayColumns</dt>
+  <dd><code>Array</code> <b>Required</b> - defines the columns in the grid</dd>
+  <dt>rowData</dt>
+  <dd><code>Array</code> <b>Required</b> - array of data. Only the fields defined in the displayColumns will show</dd>
+  <dt>hideTablePager</dt>
+  <dd><code>Boolean</code> - determines if the pagination at the bottom should show</dd>
+  <dt>rowTemplate</dt>
+  <dd><code>String</code> - allows a custom row template to be passed in</dd>
+  <dt>sortingOptions</dt>
+  <dd><code>Object</code> - with two properties field: <code>String</code> and reverse: <code>Boolean</code></dd>
+  <dt>tableCaption</dt>
+  <dd><code>String</code> - gives the table a caption</dd>
+  <dt>hideTableCaption</dt>
+  <dd><code>Boolean</code> - puts a class of sr-only on the table caption. That way the heading is still visible to screen readers</dd>
+  <dt>tableClass</dt>
+  <dd><code>String</code> - passes in class to table. You can chain table classes like 'class1 class2'</dd>
+  <dt>pageSize</dt>
+  <dd><code>Counting Number</code> - defaults to 10</dd>
+  <dt>serverSideSorting</dt>
+  <dd><code>Boolean</code> - if there is server side sorting set to true</dd>
+</dl>
+
+<h2>Table with Pagination</h2>
+<div class="codeExample">
+  <div class="exampleOutput">
+    <div ng-controller="TableController2 as table">
+  <iui-table 
+    display-columns="table.gridColumns" 
+    row-data="table.data"></iui-table>
+</div>
+
+  </div>
+  <div class="codeBlock">
+    <div class="highlight" ng-non-bindable>
+      <pre><span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">"TableController2 as table"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;iui-table</span> 
+    <span class="na">display-columns=</span><span class="s">"table.gridColumns"</span> 
+    <span class="na">row-data=</span><span class="s">"table.data"</span><span class="nt">&gt;&lt;/iui-table&gt;</span>
+<span class="nt">&lt;/div&gt;</span></pre>
+    </div>
+  </div>
+</div>
+<script>app.controller('TableController2', [function () {
+  var that = this;
+  that.gridColumns = [
+    {
+      field: 'codeName',
+      displayName: 'Code Name',
+      columnClass: 'code-name-custom-class'
+    },
+    {
+      field: 'agency',
+      displayName: 'Agency',
+      columnClass: 'agencyCustomClass'
+    }
+  ];
+  that.data = [
+    {
+      name: 'Maxwell Smart',
+      codeName: 'Agent 86',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 99',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Mr. Big',
+      agency: 'KAOS'
+    },
+    {
+      codeName: 'The Chief',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Hymie the Robot',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 8',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 13',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 44',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Ludwig Von Siegfried',
+      agency: 'KAOS'
+    },
+    {
+      codeName: 'Shtarker',
+      agency: 'KAOS'
+    },
+    {
+      codeName: 'The Claw',
+      agency: 'KAOS'
+    },
+    {
+      codeName: 'Spinoza',
+      agency: 'KAOS'
+    },
+    {
+      codeName: 'Fang',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 1',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 2',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 3',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 4',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 5',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 6',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 7',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 9',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 10',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 11',
+      agency: 'CONTROL'
+    }
+  ];
+}]);
+</script>
+<div class="codeBlock jsExample">
+  <div class="highlight">
+    <pre><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'TableController2'</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">gridColumns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">field</span><span class="p">:</span> <span class="s1">'codeName'</span><span class="p">,</span>
+      <span class="na">displayName</span><span class="p">:</span> <span class="s1">'Code Name'</span><span class="p">,</span>
+      <span class="na">columnClass</span><span class="p">:</span> <span class="s1">'code-name-custom-class'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">field</span><span class="p">:</span> <span class="s1">'agency'</span><span class="p">,</span>
+      <span class="na">displayName</span><span class="p">:</span> <span class="s1">'Agency'</span><span class="p">,</span>
+      <span class="na">columnClass</span><span class="p">:</span> <span class="s1">'agencyCustomClass'</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s1">'Maxwell Smart'</span><span class="p">,</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 86'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 99'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Mr. Big'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'KAOS'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'The Chief'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Hymie the Robot'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 8'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 13'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 44'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Ludwig Von Siegfried'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'KAOS'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Shtarker'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'KAOS'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'The Claw'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'KAOS'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Spinoza'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'KAOS'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Fang'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 1'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 2'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 3'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 4'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 5'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 6'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 7'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 9'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 10'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 11'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+<span class="p">}]);</span></pre>
+  </div>
+</div>
+
+
+    </div>
+    <!-- MOBILE ONLY SIDENAV -->
+    <aside class="sg-sidebar visible-xs" role="complementary">
+        <nav class="sg-nav-secondary" role="navigation">
+            <ul role="menu">
+                
+                <li role="presentation"><a href="#iui-table">iui-table</a></li>
+                
+            </ul>
+        </nav>
+    </aside>
+    </main>    
+
+  </body>
+</html>
