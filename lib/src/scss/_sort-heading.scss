@@ -1,0 +1,41 @@
+@import 'compass/css3/transform';
+
+/*
+--------------------------------------------------------------------------
+  Sort Heading
+--------------------------------------------------------------------------
+*/
+
+$sort-heading-padding: 20px !default;
+$sort-heading-arrow-width: 6px !default;
+
+
+.iui-sort-heading {
+  display: inline-block;
+  text-decoration: none;
+  padding-right: $sort-heading-padding;
+  position: relative;
+  &:after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -($sort-heading-arrow-width/2);
+    content: ' ';
+    width: 0;
+    height: 0;
+    opacity: 0;
+    border-left: $sort-heading-arrow-width solid transparent;
+    border-right: $sort-heading-arrow-width solid transparent;
+    border-top: $sort-heading-arrow-width solid $sg_light_hightlight;
+    @include transition(all 500ms ease-in-out);
+  }
+  &:focus:after, &.sorted:after {
+    opacity: 1;
+  }
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+  &.sorted.reversed:after {
+    @include transform(rotateX(180deg));
+  }
+}
