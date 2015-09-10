@@ -1,68 +1,104 @@
-// pager button styles
-
 @import 'compass/css3/transform';
+@import 'compass/css3/border-radius';
 
-.iui-sort-heading {
-  display: inline-block;
-  text-decoration: none;
-  padding-right: 20px;
+/*
+--------------------------------------------------------------------------
+  Pager Buttons
+--------------------------------------------------------------------------
+*/
+
+$pager-icon-height: (1em/3) !default;
+$pager-triangle-width: (sqrt(3) * (1/2) * $pager-icon-height) !default;
+$pager-triangle-incircle-radius: (sqrt(3) * (1/6) * $pager-icon-height) !default;
+$pager-padding: 6px !default;
+$pager-bar-width: (0.2 * $pager-icon-height) !default;
+$pager-bar-spacing: (0.1 * $pager-icon-height) !default;
+$pager-button-border-width: 1px !default;
+
+.iui-pager-button {
+  // Allows us to scale the icons on mobile
+  font-size: $base-mobile-icon-size;
+  padding: 0;
   position: relative;
-  &:after {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin-top: -3px;
-    content: ' ';
-    width: 0;
-    height: 0;
-    opacity: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid $sg_light_hightlight;
-    @include transition(all 500ms ease-in-out);
+  width: 1em;
+  height: 1em;
+  @include border-radius(50%);
+  @media #{$mq-sm-screen} {
+    font-size: $base-icon-size;
   }
-  &:focus:after, &.sorted:after {
-    opacity: 1;
+  &[disabled], 
+  &:disabled {
+    .pager-last-triangle, 
+    .pager-first-triangle, 
+    .pager-first-bar, 
+    .pager-last-bar {
+      border-left-color: $sg_light_hightlight;
+    }
   }
-  &:hover, &:focus {
-    text-decoration: none;
-  }
-  &.sorted.reversed:after {
-    @include transform(rotateX(180deg));
+  &:hover:not([disabled]), 
+  &:focus:not([disabled]) {
+    .pager-last-triangle, 
+    .pager-first-triangle, 
+    .pager-first-bar, 
+    .pager-last-bar {
+      border-left-color: white;
+    }
   }
 }
 
+.pager-last-triangle, 
 .pager-first-triangle {
+  position: absolute;
   width: 0;
   height: 0;
+  left: 50%;
+  top: 50%;
+  margin-left: -1*$pager-triangle-incircle-radius;
+  margin-top: -($pager-icon-height/2);
   border-style: solid;
-  border-width: 5px 8.7px 5px 0;
-  border-color: transparent $sg_secondary transparent transparent;
-  margin-left: 2px;
-  margin-left: 0;
-}
-
-.pager-first-bar {
-  width: 10px;
-  border-left: 2px solid $sg_secondary;
-  margin-top: -6px;
-  height: 12px;
-  margin-left: -3px;
-}
-
-.pager-last-triangle {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 5px 0 5px 8.7px;
   border-color: transparent transparent transparent $sg_secondary;
-  margin-left: -1px;
+  border-width: ($pager-icon-height/2) 0 ($pager-icon-height/2) $pager-triangle-width;
 }
 
-.pager-last-bar {
-  width: 10px;
-  border-left: 2px solid $sg_secondary;
-  margin-top: -6px;
-  height: 12px;
-  margin-left: 1px;
+.pager-last-bar, 
+.pager-first-bar {
+  border-left: $pager-bar-width solid $sg_secondary;
+  height: $pager-icon-height;
+  margin-left: $pager-bar-spacing;
+  margin-top: -($pager-icon-height/2);
+}
+
+
+.iui-pager {
+  @extend .clearfix;
+  input {
+    display: inline;
+    width: auto;
+  }
+}
+
+.table-pager-info {
+  padding-bottom: $pager-padding;
+  @media #{$mq-sm-screen} {
+    float: left;
+    padding-top: $pager-padding;
+  }
+}
+
+.table-pager-buttons {
+  @media #{$mq-sm-screen} {
+    float: right;
+  }
+}
+
+// Accomodates spaces for the bar icon
+.table-pager-last > .pager-last-triangle, 
+.table-pager-first > .pager-first-triangle {
+  margin-left: -$pager-triangle-incircle-radius - ($pager-bar-spacing/2) - ($pager-bar-width/2);
+}
+
+// Rotatate the previous and first buttons so they are a mirror image of the next and last buttons
+.table-pager-prev, 
+.table-pager-first {
+  @include transform(rotate(-180deg));
 }

@@ -182,6 +182,253 @@
   <dd><code>Boolean</code> - if there is server side sorting set to true</dd>
 </dl>
 
+<h2>Table with Pagination</h2>
+<div class="codeExample">
+  <div class="exampleOutput">
+    <div ng-controller="TableController2 as table">
+  <iui-table 
+    display-columns="table.gridColumns" 
+    row-data="table.data"></iui-table>
+</div>
+
+  </div>
+  <div class="codeBlock">
+    <div class="highlight" ng-non-bindable>
+      <pre><span class="nt">&lt;div</span> <span class="na">ng-controller=</span><span class="s">"TableController2 as table"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;iui-table</span> 
+    <span class="na">display-columns=</span><span class="s">"table.gridColumns"</span> 
+    <span class="na">row-data=</span><span class="s">"table.data"</span><span class="nt">&gt;&lt;/iui-table&gt;</span>
+<span class="nt">&lt;/div&gt;</span></pre>
+    </div>
+  </div>
+</div>
+<script>app.controller('TableController2', [function () {
+  var that = this;
+  that.gridColumns = [
+    {
+      field: 'codeName',
+      displayName: 'Code Name',
+      columnClass: 'code-name-custom-class'
+    },
+    {
+      field: 'agency',
+      displayName: 'Agency',
+      columnClass: 'agencyCustomClass'
+    }
+  ];
+  that.data = [
+    {
+      name: 'Maxwell Smart',
+      codeName: 'Agent 86',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 99',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Mr. Big',
+      agency: 'KAOS'
+    },
+    {
+      codeName: 'The Chief',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Hymie the Robot',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 8',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 13',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 44',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Ludwig Von Siegfried',
+      agency: 'KAOS'
+    },
+    {
+      codeName: 'Shtarker',
+      agency: 'KAOS'
+    },
+    {
+      codeName: 'The Claw',
+      agency: 'KAOS'
+    },
+    {
+      codeName: 'Spinoza',
+      agency: 'KAOS'
+    },
+    {
+      codeName: 'Fang',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 1',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 2',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 3',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 4',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 5',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 6',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 7',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 9',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 10',
+      agency: 'CONTROL'
+    },
+    {
+      codeName: 'Agent 11',
+      agency: 'CONTROL'
+    }
+  ];
+}]);
+</script>
+<div class="codeBlock jsExample">
+  <div class="highlight">
+    <pre><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'TableController2'</span><span class="p">,</span> <span class="p">[</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">that</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">gridColumns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">field</span><span class="p">:</span> <span class="s1">'codeName'</span><span class="p">,</span>
+      <span class="na">displayName</span><span class="p">:</span> <span class="s1">'Code Name'</span><span class="p">,</span>
+      <span class="na">columnClass</span><span class="p">:</span> <span class="s1">'code-name-custom-class'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">field</span><span class="p">:</span> <span class="s1">'agency'</span><span class="p">,</span>
+      <span class="na">displayName</span><span class="p">:</span> <span class="s1">'Agency'</span><span class="p">,</span>
+      <span class="na">columnClass</span><span class="p">:</span> <span class="s1">'agencyCustomClass'</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+  <span class="nx">that</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s1">'Maxwell Smart'</span><span class="p">,</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 86'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 99'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Mr. Big'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'KAOS'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'The Chief'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Hymie the Robot'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 8'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 13'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 44'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Ludwig Von Siegfried'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'KAOS'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Shtarker'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'KAOS'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'The Claw'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'KAOS'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Spinoza'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'KAOS'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Fang'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 1'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 2'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 3'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 4'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 5'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 6'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 7'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 9'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 10'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">codeName</span><span class="p">:</span> <span class="s1">'Agent 11'</span><span class="p">,</span>
+      <span class="na">agency</span><span class="p">:</span> <span class="s1">'CONTROL'</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+<span class="p">}]);</span></pre>
+  </div>
+</div>
+
+
     </div>
     <!-- MOBILE ONLY SIDENAV -->
     <aside class="sg-sidebar visible-xs" role="complementary">
