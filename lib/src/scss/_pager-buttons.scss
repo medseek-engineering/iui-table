@@ -26,27 +26,27 @@ $pager-button-border-width: 1px !default;
   @media #{$mq-sm-screen} {
     font-size: $base-icon-size;
   }
-  &[disabled], 
+  &[disabled],
   &:disabled {
-    .pager-last-triangle, 
-    .pager-first-triangle, 
-    .pager-first-bar, 
+    .pager-last-triangle,
+    .pager-first-triangle,
+    .pager-first-bar,
     .pager-last-bar {
-      border-left-color: $sg_light_hightlight;
+      border-left-color: $sg_light_highlight;
     }
   }
-  &:hover:not([disabled]), 
+  &:hover:not([disabled]),
   &:focus:not([disabled]) {
-    .pager-last-triangle, 
-    .pager-first-triangle, 
-    .pager-first-bar, 
+    .pager-last-triangle,
+    .pager-first-triangle,
+    .pager-first-bar,
     .pager-last-bar {
       border-left-color: white;
     }
   }
 }
 
-.pager-last-triangle, 
+.pager-last-triangle,
 .pager-first-triangle {
   position: absolute;
   width: 0;
@@ -60,7 +60,7 @@ $pager-button-border-width: 1px !default;
   border-width: ($pager-icon-height/2) 0 ($pager-icon-height/2) $pager-triangle-width;
 }
 
-.pager-last-bar, 
+.pager-last-bar,
 .pager-first-bar {
   border-left: $pager-bar-width solid $sg_secondary;
   height: $pager-icon-height;
@@ -92,13 +92,13 @@ $pager-button-border-width: 1px !default;
 }
 
 // Accomodates spaces for the bar icon
-.table-pager-last > .pager-last-triangle, 
+.table-pager-last > .pager-last-triangle,
 .table-pager-first > .pager-first-triangle {
   margin-left: -$pager-triangle-incircle-radius - ($pager-bar-spacing/2) - ($pager-bar-width/2);
 }
 
 // Rotatate the previous and first buttons so they are a mirror image of the next and last buttons
-.table-pager-prev, 
+.table-pager-prev,
 .table-pager-first {
   @include transform(rotate(-180deg));
 }
