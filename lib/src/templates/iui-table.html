@@ -24,8 +24,8 @@
         </th>
         <th
           scope="col"
-          ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'!checkbox'} | filter:{field:'!Button'} | filter:{field:'!unread'}"
-          class="iui-table-header-{{columnHeader.field | lowercase}} {{columnHeader.columnClass}}" 
+          ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'!checkbox'} | filter:{field:'!Button'} | filter:{field:'!unread'} | filter:{visible:'!false'}"
+          class="iui-table-header-{{columnHeader.field | lowercase}} {{columnHeader.columnClass}}"
           ng-include="(columnHeader.headerCellTemplate)? columnHeader.headerCellTemplate : iuiTable.settings.defaultHeaderCellTemplate">
         </th>
         <th scope="col" ng-repeat="columnHeader in iuiTable.displayColumns | filter:{field:'Button'}" class="iui-table-header-{{columnHeader.field | lowercase}} {{columnHeader.columnClass}}">
@@ -46,7 +46,7 @@
       </tr>
     </tbody>
   </table>
-  <iui-pager 
+  <iui-pager
     ng-if="iuiTable.rowData.length > 0 && !iuiTable.hideTablePager"
     page="iuiTable.pagingOption.currentPage"
     page-size="iuiTable.pagingOption.pageSize"

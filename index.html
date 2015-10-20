@@ -20,15 +20,23 @@
       app.root = '/';
       app.controller('tableTestController', ['$scope', function(scope) {
         scope.displayColumns = [
+					{
+            field: 'name',
+            displayName: 'Real Name',
+            columnClass: 'code-name-custom-class',
+						visible: false
+          },
           {
             field: 'codeName',
             displayName: 'Code Name',
-            columnClass: 'code-name-custom-class'
+            columnClass: 'code-name-custom-class',
+						visible: true
           },
           {
             field: 'agency',
             displayName: 'Agency',
-            columnClass: 'agencyCustomClass'
+            columnClass: 'agencyCustomClass',
+						visible: true
           }
         ];
         scope.rowData = [
@@ -132,10 +140,20 @@
 	<body ng-app="app" ng-controller="tableTestController">
 		<div class="container-fluid">
       <h1>iui-table</h1>
-			<iui-table 
-				display-columns="displayColumns" 
-				row-data="rowData" 
-				table-class="'table-names'" 
+			<form>
+				<div class="form-group">
+					<div class="checkbox" ng-repeat="gridColumn in displayColumns">
+						<label>
+							<input type="checkbox" ng-model="gridColumn.visible">
+							Show {{gridColumn.displayName}}
+						</label>
+					</div>
+				</div>
+			</form>
+			<iui-table
+				display-columns="displayColumns"
+				row-data="rowData"
+				table-class="'table-names'"
         page-size="10"
 				table-caption="'Table of Names'"></iui-table>
 		</div>
