@@ -36,6 +36,10 @@ angular.module('myModule', ['iui.table']);
 
 ## Changelog
 
+### 1.0.8 
+
+-  Update var name to correct spelling
+
 ### 1.0.7
 
 - moving src files to src folder
