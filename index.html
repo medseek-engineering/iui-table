@@ -3,6 +3,7 @@
 	<head>
 		<title>iuiTable</title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.13/angular.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.2/ui-bootstrap-tpls.min.js"></script>
 		<link rel="stylesheet" href="lib/dist/iui-table.css">
     <style type="text/css">
       .container-fluid {
@@ -13,25 +14,47 @@
       .agencyCustomClass {
         width: 200px;
       }
+
+      .dropdown-menu>li.checkbox {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 6px;
+      }
+
+      .dropdown-menu>li.checkbox>label {
+        display: block;
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
+
     </style>
     <script src="lib/dist/iui-table.min.js"></script>
 		<script>
-			var app = angular.module('app', ['iui.table']);
+			var app = angular.module('app', ['iui.table', 'ui.bootstrap']);
       app.root = '/';
-      app.controller('tableTestController', ['$scope', function(scope) {
-        scope.displayColumns = [
+      app.controller('tableTestController', [function() {
+        var tableTest = this;
+        tableTest.displayColumns = [
           {
             field: 'codeName',
             displayName: 'Code Name',
-            columnClass: 'code-name-custom-class'
+            columnClass: 'code-name-custom-class',
+						visible: true
+          },
+          {
+            field: 'name',
+            displayName: 'Real Name',
+            columnClass: 'code-name-custom-class',
+            visible: false
           },
           {
             field: 'agency',
             displayName: 'Agency',
-            columnClass: 'agencyCustomClass'
+            columnClass: 'agencyCustomClass',
+						visible: true
           }
         ];
-        scope.rowData = [
+        tableTest.rowData = [
           {
             name: 'Maxwell Smart',
             codeName: 'Agent 86',
@@ -129,13 +152,35 @@
       }]);
 		</script>
 	</head>
-	<body ng-app="app" ng-controller="tableTestController">
+	<body ng-app="app" ng-controller="tableTestController as tableTest">
 		<div class="container-fluid">
       <h1>iui-table</h1>
-			<iui-table 
-				display-columns="displayColumns" 
-				row-data="rowData" 
-				table-class="'table-names'" 
+      <div class="clearfix">
+        <div class="btn-group pull-right" ng-class="{'open':tableTest.dropdownOpen}">
+          <button 
+            class="btn btn-default dropdown-toggle" 
+            type="button" id="dropdownMenu1" 
+            data-toggle="dropdown" 
+            aria-haspopup="true" 
+            ng-click="tableTest.dropdownOpen = !tableTest.dropdownOpen"
+            aria-expanded="{{tableTest.dropdownOpen}}">
+            Columns
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li ng-repeat="gridColumn in tableTest.displayColumns" class="checkbox">
+              <label>
+                <input ng-disabled="((tableTest.displayColumns | filter:{visible:'!false'}).length < 2) && gridColumn.visible" type="checkbox" ng-model="gridColumn.visible">
+                {{gridColumn.displayName}}
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+			<iui-table
+				display-columns="tableTest.displayColumns"
+				row-data="tableTest.rowData"
+				table-class="'table-names'"
         page-size="10"
 				table-caption="'Table of Names'"></iui-table>
 		</div>

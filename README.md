@@ -25,7 +25,7 @@ ui.use(require('iui.table'));
 
 ## Installation (without ui-core / typical)
 
-Everything you need is already minified 
+Everything you need is already minified
 node_modules/iui-table/dist/iui-table.min.js
 
 As soon as you've got the file included in your page you just need to declare a dependency on the iui.table module:
@@ -35,6 +35,17 @@ angular.module('myModule', ['iui.table']);
 **Note:** if you make changes, you must run **gulp** to rebuild the combined files in the 'dist' directory. You may need to also update the package.json version number.
 
 ## Changelog
+
+### 1.0.9
+
+-  Add ability to toggle between visible columns
+- Add an angular filter that displays any columns where .visible is not
+false. Adding visible: false to the columnDef will hide that column
+initially. Use the ng-model of a checkbox to toggle the visible columns
+
+### 1.0.8
+
+-  Update var name to correct spelling
 
 ### 1.0.7
 
