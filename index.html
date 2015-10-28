@@ -3,7 +3,7 @@
 	<head>
 		<title>iuiTable</title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.13/angular.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.2/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
 		<link rel="stylesheet" href="lib/dist/iui-table.css">
     <style type="text/css">
       .container-fluid {
@@ -30,8 +30,9 @@
     </style>
     <script src="lib/dist/iui-table.min.js"></script>
 		<script>
-			var app = angular.module('app', ['iui.table', 'ui.bootstrap']);
+			var app = angular.module('app', ['iui.table']);
       app.root = '/';
+      app.constant('_', window._);
       app.controller('tableTestController', [function() {
         var tableTest = this;
         tableTest.displayColumns = [

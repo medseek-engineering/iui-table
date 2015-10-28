@@ -36,6 +36,9 @@ angular.module('myModule', ['iui.table']);
 
 ## Changelog
 
+### 1.0.10
+- Adding ability to customize the labels (like .sr-only text)
+
 ### 1.0.9
 
 -  Add ability to toggle between visible columns
