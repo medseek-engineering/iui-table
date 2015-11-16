@@ -36,6 +36,9 @@ angular.module('myModule', ['iui.table']);
 
 ## Changelog
 
+### 1.0.11
+- Fixed bug where current page wouldn't reset when going to a new page.
+
 ### 1.0.10
 - Adding ability to customize the labels (like .sr-only text)
 
