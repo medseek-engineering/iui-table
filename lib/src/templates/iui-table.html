@@ -47,7 +47,7 @@
     </tbody>
     <tbody ng-if="!iuiTable.rowData">
       <tr>
-        <td colspan="iuiTable.displayColumns.length" ng-bind="iuiTable.emptyRowDataMessage">There is no data to display in this table.</td>
+        <td colspan="iuiTable.displayColumns.length" ng-bind="iuiTable.emptyRowDataMessage">{{iuiTable.settings.labels.emptyMessage}}</td>
       </tr>
     </tbody>
   </table>
