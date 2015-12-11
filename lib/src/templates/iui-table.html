@@ -45,6 +45,11 @@
         ng-include="(iuiTable.rowTemplate)?iuiTable.rowTemplate:iuiTable.settings.defaultRowTemplate">
       </tr>
     </tbody>
+    <tbody ng-if="!iuiTable.rowData">
+      <tr>
+        <td colspan="iuiTable.displayColumns.length" ng-bind="iuiTable.emptyRowDataMessage">There's no data to display in this table.</td>
+      </tr>
+    </tbody>
   </table>
   <iui-pager
     ng-if="iuiTable.rowData.length > 0 && !iuiTable.hideTablePager"
