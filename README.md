@@ -36,6 +36,10 @@ angular.module('myModule', ['iui.table']);
 
 ## Changelog
 
+### 1.0.12
+- Added a default message when the table is empty.
+- Created a variable to override the default empty table message.
+
 ### 1.0.11
 - Fixed bug where current page wouldn't reset when going to a new page.
 
