@@ -45,9 +45,12 @@
         ng-include="(iuiTable.rowTemplate)?iuiTable.rowTemplate:iuiTable.settings.defaultRowTemplate">
       </tr>
     </tbody>
-    <tbody ng-if="!iuiTable.rowData">
+    <tbody ng-if="!iuiTable.rowData || iuiTable.rowData.length == 0">
       <tr>
-        <td colspan="iuiTable.displayColumns.length" ng-bind="iuiTable.emptyRowDataMessage">{{iuiTable.settings.labels.emptyMessage}}</td>
+        <td colspan="{{iuiTable.displayColumns.length}}">
+          <span ng-if="!iuiTable.emptyRowDataMessage">{{iuiTable.settings.labels.emptyMessage}}</span>
+          <span ng-if="iuiTable.emptyRowDataMessage">{{iuiTable.emptyRowDataMessage}}</span>
+        </td>
       </tr>
     </tbody>
   </table>
