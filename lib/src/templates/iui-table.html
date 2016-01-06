@@ -33,13 +33,13 @@
         </th>
       </tr>
     </thead>
-    <tbody ng-if="!iuiTable.serverSideSorting && iuiTable.rowData">
+    <tbody ng-if="!iuiTable.serverSideSorting && iuiTable.rowData.length">
       <tr
         ng-repeat="row in iuiTable.rowData | orderBy:iuiTable.sortingOptions.field:iuiTable.sortingOptions.reverse | startFrom:(iuiTable.pagingOption.currentPage-1)*iuiTable.pagingOption.pageSize | limitTo:iuiTable.pagingOption.pageSize"
         ng-include="(iuiTable.rowTemplate)?iuiTable.rowTemplate:iuiTable.settings.defaultRowTemplate">
       </tr>
     </tbody>
-    <tbody ng-if="iuiTable.serverSideSorting && iuiTable.rowData">
+    <tbody ng-if="iuiTable.serverSideSorting && iuiTable.rowData.length">
       <tr
         ng-repeat="row in iuiTable.rowData | startFrom:(iuiTable.pagingOption.currentPage-1)*iuiTable.pagingOption.pageSize | limitTo:iuiTable.pagingOption.pageSize"
         ng-include="(iuiTable.rowTemplate)?iuiTable.rowTemplate:iuiTable.settings.defaultRowTemplate">
