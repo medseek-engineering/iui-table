@@ -36,6 +36,10 @@ angular.module('myModule', ['iui.table']);
 
 ## Changelog
 
+### 1.0.13
+
+- Fixed issue where tbody would not show if rowData is greater than 1. Changed display logic to check iuiTable.rowData.length instead of iuiTable.rowData
+
 ### 1.0.12
 - Added a default message when the table is empty.
 - Created a variable to override the default empty table message.
