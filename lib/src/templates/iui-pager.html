@@ -1,27 +1,27 @@
-<div class="table-pager iui-pager custom-pagination" ng-show="pageCount()">
-	<div class="table-pager-info"><span>{{labels.totalItems}}: {{totalRecords}}</span></div>
-	<div class="iui-pager-controls table-pager-buttons" ng-if="pageCount() > 1">
-		<button type="button" class="btn btn-default iui-pager-button table-pager-first" data-ng-click="getFirstPage()"  data-ng-disabled="hasNoPrevious()">
-			<div class="pager-first-triangle"><div class="pager-first-bar"></div></div>
-			<span class="first-text sr-only" ng-bind="labels.first"></span>
-		</button>
-		<button type="button" class="btn btn-default iui-pager-button table-pager-prev"  data-ng-click="getPreviousPage()" data-ng-disabled="hasNoPrevious()">
-			<div class="pager-first-triangle"></div>
-			<span class="previous-text sr-only" ng-bind="labels.previous"></span>
-		</button>
-		<span class="description"></span>
-		<span class="page">
-			<label for="tblpager_page_{{componentId}}" class="sr-only" ng-bind="labels.page"></label>
-		        <input type="number" id="tblpager_page_{{componentId}}" min="1" max="{{pageCount()}}" ng-model="page" ng-change="jumpToPage(page)" data-ng-disabled="hasNoPages()">
-			<span class="pages" id="tblpage_ofPages_{{componentId}}"> / {{pageCount()}}</span>
-		</span>
-		<button type="button" class="btn btn-default iui-pager-button table-pager-next" data-ng-click="getNextPage()" data-ng-disabled="hasNoMore()">
-			<div class="pager-last-triangle"></div>
-			<span class="next-text sr-only" ng-bind="labels.next"></span>
-		</button>
-		<button type="button" class="btn btn-default iui-pager-button table-pager-last" data-ng-click="getLastPage()" data-ng-disabled = "hasNoMore()">
-			<div class="pager-last-triangle"><div class="pager-last-bar"></div></div>
-			<span class="last-text sr-only" ng-bind="labels.last"></span>
-		</button>
-	</div>
+<div class="table-pager iui-pager custom-pagination" ng-show="pager.pageCount()">
+  <div class="table-pager-info"><span>{{pager.labels.totalItems}}: {{totalRecords}}</span></div>
+  <div class="iui-pager-controls table-pager-buttons" ng-if="pager.pageCount() > 1">
+    <button type="button" class="btn btn-default iui-pager-button table-pager-first" data-ng-click="pager.getFirstPage()"  data-ng-disabled="pager.hasNoPrevious()">
+      <div class="pager-first-triangle"><div class="pager-first-bar"></div></div>
+      <span class="first-text sr-only" ng-bind="pager.labels.first"></span>
+    </button>
+    <button type="button" class="btn btn-default iui-pager-button table-pager-prev"  data-ng-click="pager.getPreviousPage()" data-ng-disabled="pager.hasNoPrevious()">
+      <div class="pager-first-triangle"></div>
+      <span class="previous-text sr-only" ng-bind="pager.labels.previous"></span>
+    </button>
+    <span class="description"></span>
+    <span class="page">
+      <label for="tblpager_page_{{pager.componentId}}" class="sr-only" ng-bind="pager.labels.page"></label>
+      <input type="number" id="tblpager_page_{{pager.componentId}}" min="1" max="{{pager.pageCount()}}" ng-model="pager.page" ng-change="jumpToPage(pager.page)" data-ng-disabled="pager.hasNoPages()">
+      <span class="pages" id="tblpage_ofPages_{{pager.componentId}}"> / {{pager.pageCount()}}</span>
+    </span>
+    <button type="button" class="btn btn-default iui-pager-button table-pager-next" data-ng-click="pager.getNextPage()" data-ng-disabled="pager.hasNoMore()">
+      <div class="pager-last-triangle"></div>
+      <span class="next-text sr-only" ng-bind="pager.labels.next"></span>
+    </button>
+    <button type="button" class="btn btn-default iui-pager-button table-pager-last" data-ng-click="pager.getLastPage()" data-ng-disabled="pager.hasNoMore()">
+      <div class="pager-last-triangle"><div class="pager-last-bar"></div></div>
+      <span class="last-text sr-only" ng-bind="pager.labels.last"></span>
+    </button>
+  </div>
 </div>
