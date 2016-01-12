@@ -38,6 +38,7 @@ angular.module('myModule', ['iui.table']);
 
 ### 1.0.14
 - Fixed issues where number in pagination field was not updating when custom page number entered
+- Add .form-control class to number input to show validation state
 
 ### 1.0.13
 
