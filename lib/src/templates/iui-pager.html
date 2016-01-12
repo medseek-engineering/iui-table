@@ -12,7 +12,7 @@
     <span class="description"></span>
     <span class="page">
       <label for="tblpager_page_{{pager.componentId}}" class="sr-only" ng-bind="pager.labels.page"></label>
-      <input type="number" id="tblpager_page_{{pager.componentId}}" min="1" max="{{pager.pageCount()}}" ng-model="pager.page" ng-change="jumpToPage(pager.page)" data-ng-disabled="pager.hasNoPages()">
+      <input type="number" class="form-control" id="tblpager_page_{{pager.componentId}}" min="1" max="{{pager.pageCount()}}" ng-model="pager.page" ng-change="jumpToPage(pager.page)" data-ng-disabled="pager.hasNoPages()">
       <span class="pages" id="tblpage_ofPages_{{pager.componentId}}"> / {{pager.pageCount()}}</span>
     </span>
     <button type="button" class="btn btn-default iui-pager-button table-pager-next" data-ng-click="pager.getNextPage()" data-ng-disabled="pager.hasNoMore()">
