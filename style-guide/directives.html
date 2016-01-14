@@ -135,7 +135,8 @@
     table-caption="'Table of Names'"
     hide-table-caption="false"
     page-size="10"
-    server-side-sorting="false"></iui-table>
+    server-side-sorting="false"
+    empty-row-data-message="There is no data to display."></iui-table>
 </div>
 
   </div>
@@ -151,7 +152,8 @@
     <span class="na">table-caption=</span><span class="s">"'Table of Names'"</span>
     <span class="na">hide-table-caption=</span><span class="s">"false"</span>
     <span class="na">page-size=</span><span class="s">"10"</span>
-    <span class="na">server-side-sorting=</span><span class="s">"false"</span><span class="nt">&gt;&lt;/iui-table&gt;</span>
+    <span class="na">server-side-sorting=</span><span class="s">"false"</span>
+    <span class="na">empty-row-data-message=</span><span class="s">"There is no data to display."</span><span class="nt">&gt;&lt;/iui-table&gt;</span>
 <span class="nt">&lt;/div&gt;</span></pre>
     </div>
   </div>
@@ -180,6 +182,8 @@
   <dd><code>Counting Number</code> - defaults to 10</dd>
   <dt>serverSideSorting</dt>
   <dd><code>Boolean</code> - if there is server side sorting set to true</dd>
+  <dt>empty-row-data-message</dt>
+  <dd><code>String</code> - a message that displays when there's no data in the table. The default is "There's no data to display in this table."</dd>
 </dl>
 
 <h2>Table with Pagination</h2>
@@ -429,6 +433,23 @@
 </div>
 
 
+<h2>Foreign Language Support</h2>
+<p class="styleguide">iui-table includes a number of sr-only labels that are used for accessibility reasons. 
+To customize/change these labels, you can access the <code class="styleguide">iuiTableLabels</code> service. Changing 
+these values will change the labels app wide. 
+<dl class="dl-horizontal dt-as-left-aligned short-list">
+  <dt>totalItems</dt><dd>Total Items</dd>
+  <dt>first</dt><dd>First</dd>
+  <dt>previous</dt><dd>Previous</dd>
+  <dt>page</dt><dd>Page</dd>
+  <dt>next</dt><dd>Next</dd>
+  <dt>last</dt><dd>Last</dd>
+  <dt>sortBy</dt><dd>Sort By</dd>
+  <dt>selected</dt><dd>Selected</dd>
+  <dt>selectAll</dt><dd>Select All</dd>
+  <dt>unread</dt><dd>Unread</dd>
+  <dt>actions</dt><dd>Actions</dd>
+</dl></p>
     </div>
     <!-- MOBILE ONLY SIDENAV -->
     <aside class="sg-sidebar visible-xs" role="complementary">

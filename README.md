@@ -36,6 +36,24 @@ angular.module('myModule', ['iui.table']);
 
 ## Changelog
 
+### 1.0.14
+- Fixed issues where number in pagination field was not updating when custom page number entered
+- Add .form-control class to number input to show validation state
+
+### 1.0.13
+
+- Fixed issue where tbody would not show if rowData is greater than 1. Changed display logic to check iuiTable.rowData.length instead of iuiTable.rowData
+
+### 1.0.12
+- Added a default message when the table is empty.
+- Created a variable to override the default empty table message.
+
+### 1.0.11
+- Fixed bug where current page wouldn't reset when going to a new page.
+
+### 1.0.10
+- Adding ability to customize the labels (like .sr-only text)
+
 ### 1.0.9
 
 -  Add ability to toggle between visible columns
