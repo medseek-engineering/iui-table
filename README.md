@@ -36,6 +36,9 @@ angular.module('myModule', ['iui.table']);
 
 ## Changelog
 
+### 1.0.15
+- Fixed issue when searching/filtering results on a different table page would not display any results.
+
 ### 1.0.14
 - Fixed issues where number in pagination field was not updating when custom page number entered
 - Add .form-control class to number input to show validation state
