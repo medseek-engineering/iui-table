@@ -36,6 +36,9 @@ angular.module('myModule', ['iui.table']);
 
 ## Changelog
 
+### 1.0.16
+- Performance improvements for apps using `conf.client.head.addlPathedScripts`
+
 ### 1.0.15
 - Fixed issue when searching/filtering results on a different table page would not display any results.
 
