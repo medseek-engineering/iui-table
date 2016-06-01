@@ -32,7 +32,13 @@ As soon as you've got the file included in your page you just need to declare a 
 angular.module('myModule', ['iui.table']);
 
 ## Build
-**Note:** if you make changes, you must run **gulp** to rebuild the combined files in the 'dist' directory. You may need to also update the package.json version number.
+When Making changes, follow these steps
+1. Run **gulp** to rebuild the combined files in the 'dist' directory. 
+2. Update the version number at the top of the package.json file.
+3. Update the README file in the Changelog with the change that was made and the new version that was created.
+4. Create a Pull Request and assign it a repo owner.
+5. After it's merged, run `npm publish` to create a new release in npm.
+6. In the product you want to see the change, update iui-table's version number to the newly created version and run `npm install`.
 
 ## Changelog
 
