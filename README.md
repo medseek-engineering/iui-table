@@ -34,11 +34,11 @@ angular.module('myModule', ['iui.table']);
 ## Build
 When Making changes, follow these steps
 
-1. Run **gulp** to rebuild the combined files in the 'dist' directory. 
+1. Run `gulp` to rebuild the combined files in the 'dist' directory. 
 
-2. Update the version number at the top of the package.json file.
+2. Update the version number at the top of the 'package.json' file.
 
-3. Update the README file in the Changelog with the change that was made and the new version that was created.
+3. Update the 'README' file in the Changelog with the change that was made and the new version that was created.
 
 4. Create a Pull Request and assign it a repo owner.
 
