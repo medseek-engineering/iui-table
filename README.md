@@ -44,7 +44,7 @@ When Making changes, follow these steps
 
 5. After it's merged, run `npm publish` to create a new release in npm.
 
-6. In the product you want to see the change, update iui-table's version number to the newly created version and run `npm install`.
+6. In the product you want to see the change, in the product's 'package.json' file, update iui-table's version number to the newly created version and run `npm install`.
 
 ## Changelog
 
