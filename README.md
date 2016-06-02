@@ -48,6 +48,9 @@ When Making changes, follow these steps
 
 ## Changelog
 
+### 1.0.17
+- Fixed Pagination box spacing issue for IE11.
+
 ### 1.0.16
 - Performance improvements for apps using `conf.client.head.addlPathedScripts`
 
