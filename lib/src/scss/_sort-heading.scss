@@ -28,6 +28,7 @@ $sort-heading-arrow-width: 6px !default;
     border-right: $sort-heading-arrow-width solid transparent;
     border-top: $sort-heading-arrow-width solid $sg_light_highlight;
     @include transition(all 500ms ease-in-out);
+    @extend .no-print;
   }
   &:focus:after, &.sorted:after {
     opacity: 1;

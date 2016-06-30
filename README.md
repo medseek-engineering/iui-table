@@ -48,6 +48,9 @@ When Making changes, follow these steps
 
 ## Changelog
 
+### 1.0.18
+- Hide the sorting arrow for iui-table thead columns in print view.
+
 ### 1.0.17
 - Fixed Pagination box spacing issue for IE11.
 
