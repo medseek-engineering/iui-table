@@ -1,6 +1,6 @@
 {
   "name": "iui-table",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Angular dynamic table directive",
   "main": "./lib/index.js",
   "private": false,
@@ -37,7 +37,7 @@
     "gulp-rename": "~0.2.2",
     "gulp-uglify": "~0.2.0",
     "gulp-util": "~2.2.12",
-    "jquery": "~2.1.4",
+    "jquery": "~3.0.0",
     "jshint": "~2.3.0",
     "jshint-stylish": "~1.0.0",
     "karma": "~0.12.1",
