@@ -20,5 +20,6 @@ coverage
 karma_html
 .sass-cache
 .DS_Store
+newrelic.js
 
 config/*.local.*

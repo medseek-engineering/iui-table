@@ -34,7 +34,7 @@ angular.module('myModule', ['iui.table']);
 ## Build
 When Making changes, follow these steps
 
-1. Run `gulp` to rebuild the combined files in the 'dist' directory. 
+1. Run `gulp` to rebuild the combined files in the 'dist' directory.
 
 2. Update the version number at the top of the 'package.json' file.
 
@@ -47,6 +47,9 @@ When Making changes, follow these steps
 6. In the product you want to see the change, in the product's 'package.json' file, update iui-table's version number to the newly created version and run `npm install`.
 
 ## Changelog
+
+### 1.0.18
+- Updated jQuery version to 3.0.0 for security vulnerability
 
 ### 1.0.17
 - Fixed Pagination box spacing issue for IE11.
